@@ -1,38 +1,84 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { z } from "zod";
 
 export const weekDays = [
-  { day: "Segunda", morning: "Pão de queijo G", afternoon: "Forrozinho de coco" },
-  { day: "Terça", morning: "Pão de queijo G", afternoon: "Pão de queijo médio c/ presunto" },
-  { day: "Quarta", morning: "Pão de queijo G", afternoon: "Forrozinho de coco" },
+  {
+    day: "Segunda",
+    morning: "Pão de queijo G",
+    afternoon: "Forrozinho de coco",
+  },
+  {
+    day: "Terça",
+    morning: "Pão de queijo G",
+    afternoon: "Pão de queijo médio c/ presunto",
+  },
+  {
+    day: "Quarta",
+    morning: "Pão de queijo G",
+    afternoon: "Forrozinho de coco",
+  },
   { day: "Quinta", morning: "Pão de queijo G", afternoon: "Salgado" },
-  { day: "Sexta", morning: "Pão de queijo G", afternoon: "Pão de queijo médio c/ presunto" },
+  {
+    day: "Sexta",
+    morning: "Pão de queijo G",
+    afternoon: "Pão de queijo médio c/ presunto",
+  },
   { day: "Sábado", morning: "Por escala", afternoon: null },
 ] as const;
 
 export const peopleByFloor = {
   "Andar de Cima": [
-    "Alessandro", "Ana Claudia", "Ana Marcia", "Carlos Roberto", "Daniel Freire",
-    "Felipe", "Gustavo Anchieta", "Henrique", "Jefferson", "Vander Carlos",
-    "Evandro Assis", "Giovani", "Samuel", "Selminha", "Vantuir Oliveira", "Vitor",
-    "Cris Cruz", "Cristiana Oliveira", "Adrian"
+    "Alessandro",
+    "Ana Claudia",
+    "Ana Marcia",
+    "Carlos Roberto",
+    "Daniel Freire",
+    "Felipe",
+    "Gustavo Anchieta",
+    "Henrique",
+    "Jefferson",
+    "Vander Carlos",
+    "Evandro Assis",
+    "Giovani",
+    "Samuel",
+    "Selminha",
+    "Vantuir Oliveira",
+    "Vitor",
+    "Cris Cruz",
+    "Cristiana Oliveira",
+    "Adrian",
   ],
   "Andar de Baixo": [
-    "André Aurelio", "Breno", "Carlos Henrique", "Celso", "Eduardo", 
-    "Fernando Silva", "Gustavo Aparecido", "João Henrique", "Kauã", 
-    "Leonardo Negrini", "Mateus Pereira", "Pedro Henrique(Cândido)", 
-    "Pedro Paulo de Assis", "Pedro Paulo - Avançado", "Thalles Terra", 
-    "Vitor Hugo", "William Siva", "Valesca Eliana", "Elza"
-  ]
+    "André Aurelio",
+    "Breno",
+    "Carlos Henrique",
+    "Celso",
+    "Eduardo",
+    "Fernando Silva",
+    "Gustavo Aparecido",
+    "João Henrique",
+    "Kauã",
+    "Leonardo Negrini",
+    "Mateus Pereira",
+    "Pedro Henrique(Cândido)",
+    "Pedro Paulo de Assis",
+    "Pedro Paulo - Avançado",
+    "Thalles Terra",
+    "Vitor Hugo",
+    "William Siva",
+    "Valesca Eliana",
+    "Elza",
+  ],
 } as const;
 
 export const allPeople = [
   ...peopleByFloor["Andar de Cima"],
-  ...peopleByFloor["Andar de Baixo"]
+  ...peopleByFloor["Andar de Baixo"],
 ] as const;
 
-export type WeekDay = typeof weekDays[number]["day"];
+export type WeekDay = (typeof weekDays)[number]["day"];
 export type Period = "Manhã" | "Tarde";
-export type Person = typeof allPeople[number];
+export type Person = (typeof allPeople)[number];
 export type Floor = keyof typeof peopleByFloor;
 
 export const attendanceRecordSchema = z.object({
